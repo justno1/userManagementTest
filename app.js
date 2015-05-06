@@ -25,7 +25,7 @@
       //    postAction();
         },
         error: function(user,error){
-          document.getElementById('form-signUP-message').innerHTML = error.message + '[' + error.code + ']';
+          document.getElementById('form-signUp-message').innerHTML = error.message + '[' + error.code + ']';
         }
       });
     },false);
