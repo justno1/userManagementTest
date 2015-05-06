@@ -25,7 +25,6 @@
       });
     },false);
       }
-      document.getElementById('form-signup-message').innerHTML = "TEST";
     };
 
   this.Router = new router();
