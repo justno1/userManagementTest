@@ -27,7 +27,7 @@
       }
     };
 
-  Parse.history.start();
+//  Parse.history.start();
   handler.logInViewFunc();
 
 })();
