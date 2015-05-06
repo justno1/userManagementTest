@@ -20,12 +20,12 @@
       //    postAction();
         },
         error: function(user,error){
-          document.getElementById('form-signin-message').innerHTML = error.message + '[' + error.code + ']';
+          document.getElementById('form-signup-message').innerHTML = error.message + '[' + error.code + ']';
         }
       });
     },false);
       }
-      document.getElementById('form-signin-message').innerHTML = "TEST";
+      document.getElementById('form-signup-message').innerHTML = "TEST";
     };
 
   this.Router = new router();
