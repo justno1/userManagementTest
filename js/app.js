@@ -8,6 +8,8 @@
   navbarFunc: function(){
 
     var currentUser = Parse.User.current();
+
+    console.log("now in navnerFunc()");
     
      if(currentUser){
 
