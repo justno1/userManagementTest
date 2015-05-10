@@ -33,6 +33,8 @@
 
    logInViewFunc: function(redirect){
 
+    console.log("now in logInViewFunc()");
+
   //   綁定註冊表單的註冊檢查事件(); // 送出還要再檢查一次，這裡會用Parse.User.signUp和相關函數
      document.getElementById('form-signup').addEventListener('submit',function(j){
       j.preventDefault();
