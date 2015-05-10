@@ -5,6 +5,30 @@
 
  var handler = {
 
+  navbarFunc: function(){
+    
+    var currentUser = Parse.User.current();
+    
+     if(currentUser){
+
+ //      顯示哪些button();
+       document.getElementById('loginButton').style.display = "none"; 
+       document.getElementById('logoutButton').style.display = "display"; 
+
+     } else {
+
+ //      顯示哪些button();    
+       document.getElementById('loginButton').style.display = "display"; 
+       document.getElementById('logoutButton').style.display = "none"; 
+     }
+
+     document.getElementById('logoutButton').addEventListener("click",function(){
+      Parse.User.logOut();
+      handler.navbarFunc();
+      window.location.hash = "login/";
+     })
+   },
+
    logInViewFunc: function(redirect){
 
   //   綁定註冊表單的註冊檢查事件(); // 送出還要再檢查一次，這裡會用Parse.User.signUp和相關函數
@@ -44,6 +68,7 @@
         });
     }, false);
 
+  handler.navbarFunc();
   handler.logInViewFunc();
 
 })();
