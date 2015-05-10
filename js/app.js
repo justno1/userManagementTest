@@ -6,7 +6,7 @@
  var handler = {
 
   navbarFunc: function(){
-    
+
     var currentUser = Parse.User.current();
     
      if(currentUser){
@@ -68,7 +68,9 @@
         });
     }, false);
 
+  Parse.history.start();
   handler.navbarFunc();
   handler.logInViewFunc();
+
 
 })();
