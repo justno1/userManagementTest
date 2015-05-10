@@ -27,7 +27,7 @@
  //      顯示哪些button();
        document.getElementById('loginButton').style.display = "none"; 
        document.getElementById('logoutButton').style.display = "display"; 
-       document.getElementById('navbar-brand').value = "none"; 
+  //     document.getElementById('navbar-brand').value = "none"; 
 
      } else {
 
