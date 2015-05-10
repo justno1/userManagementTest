@@ -71,7 +71,6 @@
       var signinPassword = document.getElementById('form-signin-password').value;
       Parse.User.logIn(signinID,signinPassword,{
           success: function(user){
-            postAction();
  //           alert("TEST")
           },
           error: function(user,error){
