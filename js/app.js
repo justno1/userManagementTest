@@ -70,7 +70,7 @@
         });
     }, false);
 
-  Parse.history.start();
+//  Parse.history.start();
   handler.navbarFunc();
   handler.logInViewFunc();
 
