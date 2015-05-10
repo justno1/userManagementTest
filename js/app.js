@@ -3,19 +3,31 @@
  //初始化Parse();
   Parse.initialize("lb68hfMRYgqhmuro8Ook5xux5mORCjF59w6Exfek","PAQaaFUhvx52GXTHFsZ4MeLF2aaQNrJT1xx6je2S");
 
+// 可選-編寫共用函數();
+  var pagingCheck = {
+    loginRequiredView: function(ViewFunction){
+      return function(){
+        var currentUser = Parse.User.current();
+        if(currentUser){
+          ViewFunction();
+        }else{
+          window.location.hash = "login/";
+        }
+      }
+    },
+  };
+
  var handler = {
 
   navbarFunc: function(){
 
-    var currentUser = Parse.User.current();
-
-    console.log("now in navnerFunc()");
-    
+    var currentUser = Parse.User.current();    
      if(currentUser){
 
  //      顯示哪些button();
        document.getElementById('loginButton').style.display = "none"; 
        document.getElementById('logoutButton').style.display = "display"; 
+       document.getElementById('navbar-brand').innerHTML = currentUser.username; 
 
      } else {
 
@@ -33,8 +45,6 @@
 
    logInViewFunc: function(redirect){
 
-    console.log("now in logInViewFunc()");
-
   //   綁定註冊表單的註冊檢查事件(); // 送出還要再檢查一次，這裡會用Parse.User.signUp和相關函數
      document.getElementById('form-signup').addEventListener('submit',function(j){
       j.preventDefault();
@@ -45,7 +55,7 @@
 
       user.signUp(null,{
         success: function(user){
-      //    postAction();
+          postAction();
         },
         error: function(user,error){
           document.getElementById('form-signup-message').innerHTML = error.message + '[' + error.code + ']';
