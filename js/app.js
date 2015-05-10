@@ -27,7 +27,23 @@
       }
     };
 
-//  Parse.history.start();
+   //   綁定登入表單的登入檢查事件(); // 送出還要再檢查一次，這裡會用Parse.User.logIn
+     document.getElementById('form-signin').addEventListener("submit",function(){
+      var signinID = document.getElementById('form-signin-student-id').value;
+      var signinPassword = document.getElementById('form-signin-password').value;
+      Parse.User.logIn(signinID,signinPassword,{
+          success: function(user){
+            postAction();
+ //           alert("TEST")
+          },
+          error: function(user,error){
+            //alert("something wrong");
+            console.log(user);
+            console.log(error);
+          }
+        });
+    }, false);
+
   handler.logInViewFunc();
 
 })();
