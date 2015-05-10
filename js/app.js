@@ -55,7 +55,7 @@
 
       user.signUp(null,{
         success: function(user){
-   //       postAction();
+          postAction();
         },
         error: function(user,error){
           document.getElementById('form-signup-message').innerHTML = error.message + '[' + error.code + ']';
