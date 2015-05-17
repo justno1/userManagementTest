@@ -64,7 +64,7 @@
     },false);
       }
     };
-
+/*
    //   綁定登入表單的登入檢查事件(); // 送出還要再檢查一次，這裡會用Parse.User.logIn
      document.getElementById('form-signin').addEventListener("submit",function(){
       var signinID = document.getElementById('form-signin-student-id').value;
@@ -80,7 +80,7 @@
           }
         });
     }, false);
-
+*/
 //  Parse.history.start();
   handler.navbarFunc();
   handler.logInViewFunc();
