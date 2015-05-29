@@ -79,6 +79,7 @@
             console.log(error);
           }
         });
+      event.preventDefault();
     }, false);
 
 //  Parse.history.start();

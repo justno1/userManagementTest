@@ -46,15 +46,15 @@
     <div class="container" id="content"></div>
       <div class="starter-template"></div>
         <br />
-        <div role="form" class="form-signin" id="form-signin">
+        <form role="form" class="form-signin" id="form-signin">
           <h3 class="form-signin-heading">Please sign in</h3>
           <div class="alert alert-danger" id="form-signin-message" style="display: none"></div>
           <input type="text" autofocus="" required="" placeholder="Your student ID" class="form-control first-component" id="form-signin-student-id">
           <input type="password" required="" placeholder="Password" class="form-control last-component" id="form-signin-password">
           <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-        </div>
+        </form>
         <hr />
-        <div role="form" class="form-signin" id="form-signup">
+        <form role="form" class="form-signin" id="form-signup">
           <h3 class="form-signin-heading">or create a new account</h3>
           <div class="alert alert-danger" id="form-signup-message" style="display: none"></div>
           <input type="text" required="" placeholder="Your student ID" class="form-control first-component" id="form-signup-student-id">
@@ -62,8 +62,56 @@
           <input type="password" required="" placeholder="Confirm Password" class="form-control middle-component" id="form-signup-password1">
           <input type="email" autofocus="" required="" placeholder="Email address" class="form-control last-component" id="form-signup-email">
           <button type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
-        </div>
+        </form>
       </div>
+
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post">
+      <fieldset>
+        <input type="file" name="fileselect" id="fileselect"></input>
+        <input id="uploadbutton" type="button" value="Upload to Parse"/>
+      </fieldset>
+    </form>
+
+    <script type="text/javascript">
+      $(function() {
+        var file;
+
+        // Set an event listener on the Choose File field.
+        $('#fileselect').bind("change", function(e) {
+          var files = e.target.files || e.dataTransfer.files;
+          // Our file var now holds the selected file
+          file = files[0];
+        });
+
+        // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
+        $('#uploadbutton').click(function() {
+          var serverUrl = 'https://api.parse.com/1/files/' + file.name;
+
+          $.ajax({
+            type: "POST",
+            beforeSend: function(request) {
+              request.setRequestHeader("X-Parse-Application-Id", 'lb68hfMRYgqhmuro8Ook5xux5mORCjF59w6Exfek');
+              request.setRequestHeader("X-Parse-REST-API-Key", 'iOGF3JgHMKhnSzRLM2XGRNaGwanahbzv7pAAlqjQ');
+              request.setRequestHeader("Content-Type", file.type);
+            },
+            url: serverUrl,
+            data: file,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+              alert("File available at: " + data.url);
+            },
+            error: function(data) {
+              var obj = jQuery.parseJSON(data);
+              alert(obj.error);
+            }
+          });
+        });
+      });
+    </script>
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
